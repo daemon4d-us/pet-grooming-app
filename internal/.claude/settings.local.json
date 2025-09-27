@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(docker-compose up:*)",
+      "Bash(docker compose:*)",
+      "Bash(docker:*)",
+      "Read(//home/dsidorenko/develop/pet_store/**)",
+      "Bash(sudo apt:*)",
+      "Bash(sudo apt install:*)",
+      "Bash(cp:*)",
+      "Bash(go run:*)",
+      "Bash(flutter run:*)",
+      "Read(//home/dsidorenko/**)",
+      "Bash($HOME/flutter/bin/flutter doctor)",
+      "Bash($HOME/flutter/bin/flutter run -d chrome)",
+      "Bash($HOME/flutter/bin/flutter create . --platforms=web)",
+      "Bash(nc:*)",
+      "Bash(netstat:*)",
+      "Bash(ss:*)",
+      "Bash(lsof:*)",
+      "Bash(curl:*)",
+      "Bash(PORT=8081 go run main.go)",
+      "Bash(pkill:*)",
+      "Bash($HOME/flutter/bin/flutter run -d chrome --web-port=8080)",
+      "Bash($HOME/flutter/bin/flutter run -d chrome --web-port=8082)",
+      "Bash(go get:*)",
+      "Bash(xargs:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

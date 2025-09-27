@@ -1,0 +1,284 @@
+# Pet Grooming App - Complete .gitignore
+
+# =============================================================================
+# Go (Backend)
+# =============================================================================
+
+# Go build artifacts
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+bin/
+dist/
+main
+
+# Go test files
+*.test
+*.out
+*.prof
+
+# Go dependency directories
+vendor/
+
+# Go modules (if using Go 1.11+)
+go.sum
+
+# Go coverage files
+*.cover
+coverage.txt
+coverage.html
+
+# Air live reload
+tmp/
+
+# =============================================================================
+# Flutter/Dart (Mobile App)
+# =============================================================================
+
+# Flutter/Dart build artifacts
+mobile/build/
+mobile/.dart_tool/
+mobile/.packages
+mobile/.pub-cache/
+mobile/.pub/
+mobile/pubspec.lock
+
+# Flutter generated files
+mobile/.flutter-plugins
+mobile/.flutter-plugins-dependencies
+mobile/.metadata
+
+# Flutter web build
+mobile/web/
+
+# iOS specific
+mobile/ios/Flutter/Generated.xcconfig
+mobile/ios/Flutter/flutter_export_environment.sh
+mobile/ios/Runner/GeneratedPluginRegistrant.*
+mobile/ios/Pods/
+mobile/ios/.symlinks/
+mobile/ios/Flutter/App.framework
+mobile/ios/Flutter/Flutter.framework
+mobile/ios/Flutter/Flutter.podspec
+mobile/ios/ServiceDefinitions.json
+mobile/ios/Runner/GoogleService-Info.plist
+
+# Android specific
+mobile/android/gradle-wrapper.jar
+mobile/android/.gradle/
+mobile/android/captures/
+mobile/android/gradlew
+mobile/android/gradlew.bat
+mobile/android/local.properties
+mobile/android/key.properties
+mobile/android/**/*.keystore
+mobile/android/**/*.jks
+mobile/android/app/google-services.json
+
+# Flutter coverage
+mobile/coverage/
+
+# =============================================================================
+# Docker
+# =============================================================================
+
+# Docker build context
+Dockerfile
+.dockerignore
+
+# =============================================================================
+# Database
+# =============================================================================
+
+# Local database files
+*.db
+*.sqlite
+*.sqlite3
+
+# PostgreSQL dumps
+*.sql
+*.dump
+
+# =============================================================================
+# Cloud & Deployment
+# =============================================================================
+
+# Google Cloud
+.gcloud/
+service-account-key.json
+
+# Environment files
+.env
+.env.local
+.env.production
+.env.development
+*.env
+
+# =============================================================================
+# IDE & Editor
+# =============================================================================
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# IntelliJ IDEA / Android Studio
+.idea/
+*.iml
+*.ipr
+*.iws
+.gradle/
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# =============================================================================
+# Operating System
+# =============================================================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# =============================================================================
+# Logs & Temporary Files
+# =============================================================================
+
+# General logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Temporary files
+*.tmp
+*.temp
+.tmp/
+.temp/
+
+# =============================================================================
+# Security & Secrets
+# =============================================================================
+
+# API keys and secrets
+*.pem
+*.key
+*.p12
+*.cert
+*.crt
+secrets/
+credentials/
+
+# JWT secrets
+jwt-secret*
+
+# =============================================================================
+# Testing & Coverage
+# =============================================================================
+
+# Test results
+test-results/
+*.xml
+junit.xml
+
+# Coverage reports
+coverage/
+*.lcov
+
+# =============================================================================
+# Dependencies & Package Managers
+# =============================================================================
+
+# Node.js (if any)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python (if any)
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+env/
+venv/
+.venv/
+
+# =============================================================================
+# Project Specific
+# =============================================================================
+
+# Generated migration files (keep schema, ignore auto-generated)
+migrations/*.sql
+
+# Uploaded files (if any)
+uploads/
+storage/
+
+# Cache directories
+.cache/
+*.cache
+
+# Build timestamps
+.build-timestamp
+
+# =============================================================================
+# Backup Files
+# =============================================================================
+
+*.bak
+*.backup
+*.orig
+*.save

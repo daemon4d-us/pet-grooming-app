@@ -1,0 +1,42 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tree:*)",
+      "Bash(flutter build:*)",
+      "Bash(flutter run:*)",
+      "Bash(go mod:*)",
+      "Bash(sudo apt install:*)",
+      "Bash(go:*)",
+      "Bash(docker compose:*)",
+      "Bash(docker run:*)",
+      "Bash(cp:*)",
+      "Bash(curl:*)",
+      "Bash(flutter:*)",
+      "Read(//home/dsidorenko/Pictures/Screenshots/**)",
+      "Bash(netstat:*)",
+      "Bash(ss:*)",
+      "Bash(gcloud:*)",
+      "Bash(echo $ANDROID_HOME)",
+      "Read(//home/**)",
+      "Bash(export ANDROID_HOME=$HOME/Android/Sdk)",
+      "Bash(export PATH=$PATH:$ANDROID_HOME/platform-tools)",
+      "Bash(cd:*)",
+      "Bash(wget:*)",
+      "Bash(export PATH=$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools/36.1.0)",
+      "Bash(nslookup:*)",
+      "Bash(ip route:*)",
+      "Bash(awk:*)",
+      "Bash(sudo ufw:*)",
+      "Bash(sudo dpkg:*)",
+      "Bash(adb reverse:*)",
+      "Bash(export PATH=$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator)",
+      "Bash(emulator:*)",
+      "Bash(adb:*)",
+      "Bash(paste:*)",
+      "Bash(git init:*)",
+      "Bash(git add:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
