@@ -1,0 +1,13 @@
+[package]
+name = "pet-store-service"
+version = "0.1.0"
+edition = "2025"
+
+[dependencies]
+actix-web = { version = "4", default-features = false, features = [
+  "compress-brotli",
+  "compress-gzip",
+  "compress-zstd",
+  "macros"
+]
+}
