@@ -84,9 +84,9 @@ mobile/coverage/
 # Docker
 # =============================================================================
 
-# Docker build context
-Dockerfile
-.dockerignore
+# Docker build context (commented out - we need these files for Cloud Build)
+# Dockerfile
+# .dockerignore
 
 # =============================================================================
 # Database
