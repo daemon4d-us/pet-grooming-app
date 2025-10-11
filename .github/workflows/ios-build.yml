@@ -60,10 +60,14 @@ jobs:
         # Decode and install provisioning profile from secret
         echo "${{ secrets.IOS_DEV_PROVISIONING_PROFILE }}" | base64 --decode > ~/Library/MobileDevice/Provisioning\ Profiles/development.mobileprovision
 
-    - name: Configure Export Options
+    - name: Configure Signing
       working-directory: mobile/ios
       run: |
-        # Replace placeholder values in ExportOptionsDevelopment.plist
+        # Update Runner target signing settings in project.pbxproj
+        sed -i '' "s/DEVELOPMENT_TEAM = \"\";/DEVELOPMENT_TEAM = \"${{ secrets.APPLE_TEAM_ID }}\";/g" Runner.xcodeproj/project.pbxproj
+        sed -i '' "s/PROVISIONING_PROFILE_SPECIFIER = \"\";/PROVISIONING_PROFILE_SPECIFIER = \"${{ secrets.IOS_DEV_PROVISIONING_PROFILE_NAME }}\";/g" Runner.xcodeproj/project.pbxproj
+
+        # Update ExportOptions.plist
         sed -i '' "s/YOUR_TEAM_ID/${{ secrets.APPLE_TEAM_ID }}/g" ExportOptionsDevelopment.plist
         sed -i '' "s/YOUR_DEVELOPMENT_PROVISIONING_PROFILE_NAME/${{ secrets.IOS_DEV_PROVISIONING_PROFILE_NAME }}/g" ExportOptionsDevelopment.plist
 
@@ -73,14 +77,11 @@ jobs:
         # Build iOS app with development signing
         flutter build ios --release --no-codesign
 
-        # Create archive with development team and provisioning profile
+        # Create archive (settings are in project file)
         xcodebuild -workspace ios/Runner.xcworkspace \
           -scheme Runner \
           -configuration Release \
           -archivePath build/ios/Runner.xcarchive \
-          DEVELOPMENT_TEAM=${{ secrets.APPLE_TEAM_ID }} \
-          PROVISIONING_PROFILE_SPECIFIER=${{ secrets.IOS_DEV_PROVISIONING_PROFILE_NAME }} \
-          CODE_SIGN_IDENTITY="Apple Development" \
           archive
 
         # Export development IPA
