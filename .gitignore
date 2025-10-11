@@ -23,7 +23,7 @@ main
 vendor/
 
 # Go modules (if using Go 1.11+)
-go.sum
+# go.sum - needed for Cloud Build reproducibility
 
 # Go coverage files
 *.cover
