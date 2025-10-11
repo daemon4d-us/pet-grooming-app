@@ -60,17 +60,25 @@ jobs:
         # Decode and install provisioning profile from secret
         echo "${{ secrets.IOS_DEV_PROVISIONING_PROFILE }}" | base64 --decode > ~/Library/MobileDevice/Provisioning\ Profiles/development.mobileprovision
 
+    - name: Configure Export Options
+      working-directory: mobile/ios
+      run: |
+        # Replace placeholder values in ExportOptionsDevelopment.plist
+        sed -i '' "s/YOUR_TEAM_ID/${{ secrets.APPLE_TEAM_ID }}/g" ExportOptionsDevelopment.plist
+        sed -i '' "s/YOUR_DEVELOPMENT_PROVISIONING_PROFILE_NAME/${{ secrets.IOS_DEV_PROVISIONING_PROFILE_NAME }}/g" ExportOptionsDevelopment.plist
+
     - name: Build iOS Development IPA
       working-directory: mobile
       run: |
         # Build iOS app with development signing
         flutter build ios --release --no-codesign
 
-        # Create archive
+        # Create archive with development team
         xcodebuild -workspace ios/Runner.xcworkspace \
           -scheme Runner \
           -configuration Release \
           -archivePath build/ios/Runner.xcarchive \
+          DEVELOPMENT_TEAM=${{ secrets.APPLE_TEAM_ID }} \
           archive
 
         # Export development IPA
