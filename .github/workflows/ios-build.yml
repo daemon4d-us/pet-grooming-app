@@ -47,14 +47,41 @@ jobs:
       working-directory: mobile/ios
       run: pod install
 
-    - name: Build iOS (Debug)
+    - name: Import Development Certificate
+      uses: Apple-Actions/import-codesign-certs@v2
+      with:
+        p12-file-base64: ${{ secrets.IOS_DEV_SIGNING_KEY }}
+        p12-password: ${{ secrets.IOS_DEV_SIGNING_KEY_PASSWORD }}
+
+    - name: Install Development Provisioning Profile
+      run: |
+        # Create provisioning profile directory
+        mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+        # Decode and install provisioning profile from secret
+        echo "${{ secrets.IOS_DEV_PROVISIONING_PROFILE }}" | base64 --decode > ~/Library/MobileDevice/Provisioning\ Profiles/development.mobileprovision
+
+    - name: Build iOS Development IPA
       working-directory: mobile
       run: |
-        flutter build ios --debug --no-codesign
+        # Build iOS app with development signing
+        flutter build ios --release --no-codesign
 
-    - name: Upload Debug Build Artifact
+        # Create archive
+        xcodebuild -workspace ios/Runner.xcworkspace \
+          -scheme Runner \
+          -configuration Release \
+          -archivePath build/ios/Runner.xcarchive \
+          archive
+
+        # Export development IPA
+        xcodebuild -exportArchive \
+          -archivePath build/ios/Runner.xcarchive \
+          -exportPath build/ios/ipa \
+          -exportOptionsPlist ios/ExportOptionsDevelopment.plist
+
+    - name: Upload Development IPA Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: pet-grooming-ios-debug-${{ github.sha }}
-        path: mobile/build/ios/iphoneos/Runner.app
+        name: pet-grooming-ios-dev-${{ github.sha }}
+        path: mobile/build/ios/ipa/*.ipa
         retention-days: 30
